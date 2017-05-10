@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Piadas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+
+    <body ng-app="piadaapp" ng-controller="piadactrl">
+
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+                </br></br></br>
+                <buttom class="btn btn-primary btn-block" ng-click="mostraform = !mostraform">Adcionar Piada</buttom>
+            </div>
+        </div>
+
+        <div ng-show="mostraform">
+            <div class="container"
+                 <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="page-header">
+                            <h1>Cadastrar<small>Piadas</small></h1>
+                        </div>
+                        <label for="Nome">Nome</label>
+                        <input type="text" class="form-control" placeholder="Nome" ng-model="piada.nome">
+                        <label for="Texto">Texto</label>
+                        <input type="text" class="form-control" placeholder="Texto" ng-model="piada.texto">
+                        <label for="Nota">Nota</label>
+                        <input type="text" class="form-control" placeholder="Nota" ng-model="piada.nota">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <label for="Autor">Autor</label>
+                                <input type="text" class="form-control" placeholder="Autor" ng-model="piada.autor.nome"><br/>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="Adulta">Adulta?</label><br/>
+                                <input type="checkbox" ng-model="piada.adulta"> Sim 
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                        <br/>
+                        <button ng-click="salvar(piada)" class="btn btn-success btn-block">Salvar</button>
+                        <br><br/>
+                        <h1 ng-show="enviando"><img src="enviando.gif"/></h1>
+                        <div class="alert alert-success" role="alert">{{mensagem}}</div>
+
+                        <button class="btn btn-info btn-block" ng-click="listar()">Buscar</button>
+                        <h1 ng-show="buscando"><img src="buscando.gif" style="width: 50px; height: 50px;"/>Buscando....</h1><br/><br/><br/>
+
+                        <table class="table" ng-show="piadas">
+                            <thead>
+                                <th>Nome</th>
+                                <th>Texto</th>
+                                <th>Adulta?</th>
+                            </thead>
+                            <tr ng-repeat="piada in piadas">
+                                <td>{{piada.nome}}</td>
+                                <td>{{piada.texto}}</td>
+                                <td>{{piada.adulta}}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div><!--container-->
+        </div>
+
+
+
+
+
+        <script src="app.js"></script>   
+    </body>
+
+</html>
